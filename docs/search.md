@@ -6,9 +6,9 @@ description: Search Secretless
 ---
 
 <!-- Algolia Search -->
-<div class="search-wrap">
+<div class=" search-wrap">
   <div id="search-searchbar"></div>
-  <div class="plop" id="search-hits"></div>
+  <div class="results" id="search-hits"></div>
   <div id="current-refined-values">
       <!-- CurrentRefinedValues widget will appear here -->
     </div>

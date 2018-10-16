@@ -11,7 +11,21 @@
 
     {% include top_nav.html %}
 
+    <!-- Search results -->
+    <div class="search-wrap">
+      <div class="results" id="search-hits"></div>
+      <div id="current-refined-values">
+          <!-- CurrentRefinedValues widget will appear here -->
+        </div>
+        
+        <div id="clear-all"><!-- ClearAll widget --></div>
+        <div id="pagination"><!-- Pagination widget --></div>
+      {% include algolia.html %}
+    </div>
+    <!-- /search results -->
+
     <div class="container">
+
       <div class="row">
           
         <div class="col-md-10 offset-md-1">

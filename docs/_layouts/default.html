@@ -11,6 +11,20 @@
     {% endif %}
 
   <body>
+
+    <!-- Search results -->
+    <div class="search-wrap">
+        <div class="results" id="search-hits"></div>
+        <div id="current-refined-values">
+            <!-- CurrentRefinedValues widget will appear here -->
+          </div>
+          
+          <div id="clear-all"><!-- ClearAll widget --></div>
+          <div id="pagination"><!-- Pagination widget --></div>
+          {% include algolia.html %}
+      </div>
+      <!-- /search results -->
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DGS7TG"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -21,6 +35,7 @@
       {% endif %}
 
       <div class="container">
+
         <div class="row">
           <div id="content" class="">
             {{ content }}

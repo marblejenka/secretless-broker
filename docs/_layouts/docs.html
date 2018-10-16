@@ -13,6 +13,20 @@ description: Secretless Broker Documentation
 
     {% include top_nav.html %}
 
+    <!-- Search results -->
+    <div class=" search-wrap">
+      <div id="search-searchbar"></div>
+      <div class="results" id="search-hits"></div>
+      <div id="current-refined-values">
+          <!-- CurrentRefinedValues widget will appear here -->
+        </div>
+        
+        <div id="clear-all"><!-- ClearAll widget --></div>
+        <div id="pagination"><!-- Pagination widget --></div>
+      {% include algolia.html %}
+    </div>
+    <!-- /search results -->
+
     <div class="container">
       <div class="grid-l-col">
         <div class="sidebar">

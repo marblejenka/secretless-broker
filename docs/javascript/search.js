@@ -1,11 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.2/dist/instantsearch.min.css">
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.2"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.2/dist/instantsearch-theme-algolia.min.css">
-
-
-
-<script>
 const search = instantsearch({
   appId: '{{ site.algolia.application_id }}',
   apiKey: '{{ site.algolia.search_only_api_key }}',
@@ -84,4 +76,3 @@ search.addWidget(
 );
 
 search.start();
-</script>
