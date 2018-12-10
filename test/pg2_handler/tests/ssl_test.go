@@ -46,7 +46,8 @@ func TestSSL(t *testing.T) {
 		{
 			TestDefinition: TestDefinition{
 				Description: "server_tls, sslmode=require, sslrootcert=invalid",
-				ShouldPass:  true,
+				ShouldPass:  false,
+				CmdOutput:   StringPointer(`x509: certificate signed by unknown authority`),
 			},
 			AbstractConfiguration: AbstractConfiguration{
 				ListenerType:    TCP,
@@ -59,7 +60,7 @@ func TestSSL(t *testing.T) {
 			TestDefinition: TestDefinition{
 				Description: "server_tls, sslmode=require, sslrootcert=malformed",
 				ShouldPass:  false,
-				CmdOutput:   StringPointer("ERROR 2000 (HY000): couldn't parse pem in sslrootcert"),
+				CmdOutput:   StringPointer("couldn't parse pem in sslrootcert"),
 			},
 			AbstractConfiguration: AbstractConfiguration{
 				ListenerType:    TCP,
@@ -72,7 +73,7 @@ func TestSSL(t *testing.T) {
 			TestDefinition: TestDefinition{
 				Description: "server_tls, sslmode=verify-ca, sslrootcert=none",
 				ShouldPass:  false,
-				CmdOutput:   StringPointer("ERROR 2000 (HY000): x509: certificate signed by unknown authority"),
+				CmdOutput:   StringPointer("x509: certificate signed by unknown authority"),
 			},
 			AbstractConfiguration: AbstractConfiguration{
 				ListenerType:    TCP,
@@ -97,7 +98,7 @@ func TestSSL(t *testing.T) {
 			TestDefinition: TestDefinition{
 				Description: "server_tls, sslmode=verify-ca, sslrootcert=invalid",
 				ShouldPass:  false,
-				CmdOutput:   StringPointer(`ERROR 2000 (HY000): x509: certificate signed by unknown authority`),
+				CmdOutput:   StringPointer(`certificate signed by unknown authority`),
 			},
 			AbstractConfiguration: AbstractConfiguration{
 				ListenerType:    TCP,
@@ -110,7 +111,7 @@ func TestSSL(t *testing.T) {
 			TestDefinition: TestDefinition{
 				Description: "server_tls, sslmode=verify-ca, sslrootcert=malformed",
 				ShouldPass:  false,
-				CmdOutput:   StringPointer("ERROR 2000 (HY000): couldn't parse pem in sslrootcert"),
+				CmdOutput:   StringPointer("couldn't parse pem in sslrootcert"),
 			},
 			AbstractConfiguration: AbstractConfiguration{
 				ListenerType:    TCP,
@@ -123,7 +124,7 @@ func TestSSL(t *testing.T) {
 			TestDefinition: TestDefinition{
 				Description: "server_no_tls, sslmode=default",
 				ShouldPass:  false,
-				CmdOutput:   StringPointer("ERROR 2026 (HY000): SSL connection error: SSL is required but the server doesn't support it"),
+				CmdOutput:   StringPointer("the backend does not allow SSL connections"),
 			},
 			AbstractConfiguration: AbstractConfiguration{
 				ListenerType:    TCP,
