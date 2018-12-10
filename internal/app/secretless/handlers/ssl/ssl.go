@@ -1,4 +1,4 @@
-package protocol
+package ssl
 
 import (
 	"crypto/tls"
@@ -16,7 +16,7 @@ type TLSConfigWrapper struct {
 	Options options
 }
 
-func ResolveTLSConfig(o options) (TLSConfigWrapper, error) {
+func ResolveTLSConfig(o options, requireCanVerifyCAOnly bool) (TLSConfigWrapper, error) {
 	tlsConf := TLSConfigWrapper{Options:o, UseTLS: true}
 
 	switch mode := o["sslmode"]; mode {
@@ -37,7 +37,7 @@ func ResolveTLSConfig(o options) (TLSConfigWrapper, error) {
 		// server certificate is validated against the CA. Relying on this
 		// behavior is discouraged, and applications that need certificate
 		// validation should always use verify-ca or verify-full.
-		if len(o["sslrootcert"]) > 0 {
+		if requireCanVerifyCAOnly && len(o["sslrootcert"]) > 0 {
 			tlsConf.VerifyCaOnly = true
 		}
 	case "verify-ca":
